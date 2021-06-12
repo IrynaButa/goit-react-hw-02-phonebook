@@ -58,15 +58,6 @@ class App extends Component {
     );
   };
 
-  calculateCompletedTodos = () => {
-    const { todos } = this.state;
-
-    return todos.reduce(
-      (total, todo) => (todo.completed ? total + 1 : total),
-      0
-    );
-  };
-
   render() {
     // const { todos, filter } = this.state;
     // const totalTodoCount = todos.length;
@@ -78,7 +69,10 @@ class App extends Component {
         <h1>Phonebook</h1>
         <Form onAddContact={this.addContact} />
         <h2>Contacts</h2>
-        <Filter onChange={this.onChangeFilter} />
+        <Filter
+          value={this.state.filter}
+          onChangeFilter={this.onChangeFilter}
+        />
         <Contacts
           contacts={this.getVisibleContacts()}
           onDeleteContact={this.deleteContact}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import shortid from "shortid";
+import styles from "./Phonebook.module.css";
 
 class Form extends Component {
   state = {
@@ -33,7 +34,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={styles.form} onSubmit={this.handleSubmit}>
         <label htmlFor={this.nameInputId}>
           Name
           <input

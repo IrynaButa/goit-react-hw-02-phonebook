@@ -24,12 +24,12 @@ class App extends Component {
       alert(`${name} already exist`);
       return;
     }
+
     const contact = {
       id: shortid.generate(),
       name,
       number,
     };
-
     this.setState((state) => ({
       contacts: [contact, ...state.contacts],
     }));
@@ -46,9 +46,7 @@ class App extends Component {
   onChangeFilter = (e) => {
     this.setState({ filter: e.currentTarget.value });
   };
-  //  changeFilter = (filter) => {
-  //     this.setState({ filter });
-  //   };
+
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
@@ -59,22 +57,17 @@ class App extends Component {
   };
 
   render() {
-    // const { todos, filter } = this.state;
-    // const totalTodoCount = todos.length;
-    // const completedTodoCount = this.calculateCompletedTodos();
-    // const visibleTodos = this.getVisibleTodos();
-
+    const { filter } = this.state;
+    const visibleContacts = this.getVisibleContacts();
     return (
       <div>
         <h1>Phonebook</h1>
         <Form onAddContact={this.addContact} />
+
         <h2>Contacts</h2>
-        <Filter
-          value={this.state.filter}
-          onChangeFilter={this.onChangeFilter}
-        />
+        <Filter value={filter} onChangeFilter={this.onChangeFilter} />
         <Contacts
-          contacts={this.getVisibleContacts()}
+          contacts={visibleContacts}
           onDeleteContact={this.deleteContact}
         />
       </div>

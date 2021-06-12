@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "./Phonebook.module.css";
 
 const Filter = ({ value, onChangeFilter }) => (
-  <label>
-    Find contacts by name
-    <input type="text" value={value} onChange={onChangeFilter} />
-  </label>
+  <div className={styles.form}>
+    <label>
+      Find contacts by name
+      <input type="text" value={value} onChange={onChangeFilter} />
+    </label>
+  </div>
 );
 Filter.propTypes = {
   value: PropTypes.string.isRequired,
